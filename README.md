@@ -1,2 +1,22 @@
-# snn-structural-evolution
-Minimal PyTorch examples for the four-stage structural evolution from ANN to event-driven SNN: Stage 0 (baseline ANN) → Stage 1 (binarization) → Stage 2 (temporal expansion) → Stage 3 (temporal accumulation) → Stage 4 (reset &amp; sparsity control).
+
+# SNN Structural Evolution Toolkit
+
+A lightweight research toolkit for structural evolution from ANN to event-driven SNN.
+
+## 🚀 Features
+
+- ANN → SNN conversion (binarization)
+- Temporal expansion (multi-step simulation)
+- Temporal accumulation
+- Reset & sparsity control
+
+## 🎯 Use Cases
+
+- Neuromorphic computing research
+- Hardware-aware AI (ReRAM / CIM / Analog AI)
+- Rapid prototyping of SNN models
+
+## 📦 Installation
+
+```bash
+pip install torch
