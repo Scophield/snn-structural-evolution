@@ -5,6 +5,8 @@
 ![Python](https://img.shields.io/badge/python-3.10%2B-blue)
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-ee4c2c)
 
+**Build high-accuracy SNNs from scratch while seeing every structural step from ANN to event-driven spikes.**
+
 A minimal PyTorch toolkit for structural evolution from ANN to event-driven SNN for hardware-aware neuromorphic computing.
 
 This repository demonstrates how conventional ANN computation can be progressively transformed into sparse, event-driven SNN behavior. The path is designed for researchers working on neuromorphic hardware, compute-in-memory accelerators, ReRAM, and analog AI systems.
