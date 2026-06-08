@@ -87,15 +87,21 @@ The default data path is `./data`, and the default output path is `./runs`. CUDA
 
 ## Results on MNIST
 
-The table below is a preliminary short-run example, not a final benchmark. It verifies the pipeline and shows the result format. Regenerate full numbers with `examples/compare_stages.py` before reporting release-quality claims.
+The table below is a preliminary v0.1 sanity benchmark, not a final paper-quality benchmark. It uses 5 epochs, 120 training batches per epoch, and 80 test batches on MNIST with seed 35.
 
-| Stage | Description | Accuracy | Time steps | Sparsity | Notes |
-| ---: | --- | ---: | ---: | ---: | --- |
-| 0 | ANN baseline | TBD | 1 | - | full benchmark pending |
-| 1 | Binarized activation | TBD | 1 | TBD | full benchmark pending |
-| 2 | Temporal expansion | TBD | 4 | TBD | full benchmark pending |
-| 3 | Membrane accumulation | TBD | 4 | TBD | full benchmark pending |
-| 4 | Reset-based sparse SNN | 85.51% | 4 | example-dependent | 5-epoch short run, partial batches |
+| Stage | Description | Test accuracy | Time steps | Spike rate | Sparsity | Event ops proxy |
+| ---: | --- | ---: | ---: | ---: | ---: | ---: |
+| 0 | ANN baseline | 89.36% | 1 | - | - | - |
+| 1 | Binarized activation | 83.38% | 1 | - | - | - |
+| 2 | Temporal expansion | 82.21% | 4 | 43.53% | 56.47% | 891,480 |
+| 3 | Membrane accumulation | 84.00% | 4 | 49.41% | 50.59% | 1,011,900 |
+| 4 | Reset-based sparse SNN | 84.06% | 4 | 43.56% | 56.44% | 892,150 |
+
+Regenerate release-quality numbers with a full run before reporting benchmark claims:
+
+```bash
+python examples/compare_stages.py --epochs 100 --max-train-batches 938 --max-test-batches 157
+```
 
 ## Evidence Figures
 
