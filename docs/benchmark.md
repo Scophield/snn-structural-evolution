@@ -23,8 +23,10 @@ python examples/compare_stages.py --epochs 5 --max-train-batches 120 --max-test-
 For release-quality numbers, run full-stage benchmarks with a fixed environment:
 
 ```bash
-python examples/compare_stages.py --epochs 100 --max-train-batches 938 --max-test-batches 157
+python examples/compare_stages.py --epochs 100 --hidden-dim 128 --max-train-batches 938 --max-test-batches 157
 ```
+
+Use `configs/mnist_tiny.yaml` for teaching and `configs/mnist_release.yaml` as the default accuracy-oriented benchmark configuration.
 
 Recommended metrics:
 

@@ -1,0 +1,15 @@
+stage: 4
+dataset: mnist
+data_dir: ./data
+epochs: 100
+batch_size: 64
+lr: 0.005
+time_steps: 4
+threshold: 1.0
+hidden_dim: 128
+seed: 35
+num_workers: 0
+output_dir: ./runs/release
+metrics_csv: ./runs/release/stage4_metrics.csv
+device: auto
+download: true

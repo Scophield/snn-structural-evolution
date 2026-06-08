@@ -87,6 +87,17 @@ python train.py --config configs/mnist_stage4.yaml
 
 The default data path is `./data`, and the default output path is `./runs`. CUDA is used automatically when available; otherwise training falls back to CPU.
 
+## Configs
+
+Two MNIST configs are provided:
+
+| Config | Purpose | Hidden dim | Notes |
+| --- | --- | ---: | --- |
+| `configs/mnist_tiny.yaml` | Understand the structural path quickly | 10 | teaching and smoke experiments |
+| `configs/mnist_release.yaml` | Accuracy-oriented benchmarking | 128 | use for release-quality runs |
+
+The tiny config keeps the model intentionally small so each structural transformation is easy to inspect. The release config is the recommended starting point for stronger MNIST benchmarks.
+
 ## Results on MNIST
 
 The table below is a preliminary v0.1 sanity benchmark, not a final paper-quality benchmark. It uses 5 epochs, 120 training batches per epoch, and 80 test batches on MNIST with seed 35.
@@ -102,8 +113,14 @@ The table below is a preliminary v0.1 sanity benchmark, not a final paper-qualit
 Regenerate release-quality numbers with a full run before reporting benchmark claims:
 
 ```bash
-python examples/compare_stages.py --epochs 100 --max-train-batches 938 --max-test-batches 157
+python examples/compare_stages.py --epochs 100 --hidden-dim 128 --max-train-batches 938 --max-test-batches 157 --time-steps 4
 ```
+
+## Why This Is Useful For Hardware Researchers
+
+Unlike black-box SNN training code, this toolkit exposes each structural transformation: activation precision, temporal execution, membrane state, reset behavior, spike sparsity, and event-operation cost.
+
+That makes it useful for studying how ANN computation becomes sparse event-driven behavior for neuromorphic hardware, compute-in-memory accelerators, ReRAM, and analog AI systems.
 
 ## Evidence Figures
 
