@@ -30,3 +30,13 @@ This release updates the project with a full Stage 0-4 MNIST benchmark using the
 | 4 | 99.25% | 97.24% | 25.79% | 74.21% | 13,206,980 |
 
 Stage 4 keeps high MNIST accuracy while producing the sparsest event activity among the temporal stages.
+
+## Reference Weights
+
+Stage 4 reference weights are available as release assets:
+
+- [stage4_mnist_hidden128_seed35_v0.1.1.pt](https://github.com/Scophield/snn-structural-evolution/releases/download/v0.1.1/stage4_mnist_hidden128_seed35_v0.1.1.pt)
+- [stage4_mnist_hidden128_seed35_v0.1.1_metrics.csv](https://github.com/Scophield/snn-structural-evolution/releases/download/v0.1.1/stage4_mnist_hidden128_seed35_v0.1.1_metrics.csv)
+- [stage4_mnist_hidden128_seed35_v0.1.1.sha256](https://github.com/Scophield/snn-structural-evolution/releases/download/v0.1.1/stage4_mnist_hidden128_seed35_v0.1.1.sha256)
+
+The standalone Stage 4 checkpoint reaches 97.75% best test accuracy.

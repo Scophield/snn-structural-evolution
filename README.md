@@ -120,6 +120,8 @@ python examples/compare_stages.py --epochs 100 --hidden-dim 128 --max-train-batc
 
 Raw CSV: [docs/results/mnist_release_hidden128_full_20260608.csv](docs/results/mnist_release_hidden128_full_20260608.csv)
 
+Reference Stage 4 weights are distributed as release assets and reach 97.75% best test accuracy; see [docs/weights.md](docs/weights.md).
+
 ## Why This Is Useful For Hardware Researchers
 
 Unlike black-box SNN training code, this toolkit exposes each structural transformation: activation precision, temporal execution, membrane state, reset behavior, spike sparsity, and event-operation cost.
@@ -205,6 +207,7 @@ More background:
 - [Structural evolution](docs/structural_evolution.md)
 - [Hardware relevance](docs/hardware_relevance.md)
 - [Benchmark notes](docs/benchmark.md)
+- [Reference weights](docs/weights.md)
 - [FAQ](docs/faq.md)
 
 ## Development
