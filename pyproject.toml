@@ -4,15 +4,15 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "snn-structural-evolution"
-version = "0.1.0"
+version = "0.1.1"
 description = "A minimal PyTorch toolkit for structural evolution from ANN to event-driven SNN."
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.9"
 license = { file = "LICENSE" }
 authors = [{ name = "Scophield" }]
 dependencies = [
-    "torch>=2.0",
-    "torchvision>=0.15",
+    "torch>=1.12",
+    "torchvision>=0.13",
     "numpy",
     "tqdm",
     "PyYAML>=6.0",

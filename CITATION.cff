@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 title: "SNN Structural Evolution Toolkit"
-version: 0.1.0
+version: 0.1.1
 date-released: 2026-06-08
 url: "https://github.com/Scophield/snn-structural-evolution"
 authors:

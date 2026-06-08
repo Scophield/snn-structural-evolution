@@ -2,8 +2,8 @@
 
 [![CI](https://github.com/Scophield/snn-structural-evolution/actions/workflows/ci.yml/badge.svg)](https://github.com/Scophield/snn-structural-evolution/actions/workflows/ci.yml)
 [![License](https://img.shields.io/github/license/Scophield/snn-structural-evolution)](LICENSE)
-![Python](https://img.shields.io/badge/python-3.10%2B-blue)
-![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-ee4c2c)
+![Python](https://img.shields.io/badge/python-3.9%2B-blue)
+![PyTorch](https://img.shields.io/badge/PyTorch-1.12%2B-ee4c2c)
 
 **Build high-accuracy SNNs from scratch while seeing every structural step from ANN to event-driven spikes.**
 
@@ -45,8 +45,8 @@ Stage 4: reset-based sparse event-driven SNN
 
 Requirements:
 
-- Python 3.10+
-- PyTorch 2.0+
+- Python 3.9+
+- PyTorch 1.12+
 
 ```bash
 git clone https://github.com/Scophield/snn-structural-evolution.git
@@ -100,21 +100,25 @@ The tiny config keeps the model intentionally small so each structural transform
 
 ## Results on MNIST
 
-The table below is a preliminary v0.1 sanity benchmark, not a final paper-quality benchmark. It uses 5 epochs, 120 training batches per epoch, and 80 test batches on MNIST with seed 35.
+Full Stage 0-4 benchmark with `hidden_dim=128`, 100 epochs, full MNIST train/test batches, seed 35, and 4 time steps for temporal stages.
 
-| Stage | Description | Test accuracy | Time steps | Spike rate | Sparsity | Event ops proxy |
-| ---: | --- | ---: | ---: | ---: | ---: | ---: |
-| 0 | ANN baseline | 89.36% | 1 | - | - | - |
-| 1 | Binarized activation | 83.38% | 1 | - | - | - |
-| 2 | Temporal expansion | 82.21% | 4 | 43.53% | 56.47% | 891,480 |
-| 3 | Membrane accumulation | 84.00% | 4 | 49.41% | 50.59% | 1,011,900 |
-| 4 | Reset-based sparse SNN | 84.06% | 4 | 43.56% | 56.44% | 892,150 |
+| Stage | Description | Train accuracy | Test accuracy | Time steps | Spike rate | Sparsity | Event ops proxy |
+| ---: | --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| 0 | ANN baseline | 99.80% | 97.91% | 1 | - | - | - |
+| 1 | Binarized activation | 99.24% | 97.09% | 1 | - | - | - |
+| 2 | Temporal expansion | 99.22% | 97.27% | 4 | 34.83% | 65.17% | 17,833,800 |
+| 3 | Membrane accumulation | 99.06% | 97.41% | 4 | 40.00% | 60.00% | 20,481,800 |
+| 4 | Reset-based sparse SNN | 99.25% | 97.24% | 4 | 25.79% | 74.21% | 13,206,980 |
 
-Regenerate release-quality numbers with a full run before reporting benchmark claims:
+Stage 4 keeps high MNIST accuracy while producing the sparsest event activity among the temporal stages.
+
+Regenerate the benchmark with:
 
 ```bash
 python examples/compare_stages.py --epochs 100 --hidden-dim 128 --max-train-batches 938 --max-test-batches 157 --time-steps 4
 ```
+
+Raw CSV: [docs/results/mnist_release_hidden128_full_20260608.csv](docs/results/mnist_release_hidden128_full_20260608.csv)
 
 ## Why This Is Useful For Hardware Researchers
 
