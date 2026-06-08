@@ -2,25 +2,31 @@
 
 The checked-in figures are generated from a short Stage 4 run so users can see the expected artifact format immediately.
 
-## Preliminary v0.1 Sanity Benchmark
+## Full MNIST Benchmark
 
-This table uses 5 epochs, 120 training batches per epoch, and 80 test batches on MNIST with seed 35.
+This table uses 100 epochs, full MNIST train/test batches, `hidden_dim=128`, seed 35, and 4 time steps for temporal stages.
+
+Environment used for this run:
+
+| Item | Value |
+| --- | --- |
+| Python | 3.9.13 |
+| PyTorch | 1.12.0 |
+| CUDA | available |
+| GPU | Quadro P620 |
+| Runtime | about 1 h 41 min |
 
 | Stage | Train accuracy | Test accuracy | Spike rate | Sparsity | Event ops proxy |
 | ---: | ---: | ---: | ---: | ---: | ---: |
-| 0 | 91.15% | 89.36% | - | - | - |
-| 1 | 87.04% | 83.38% | - | - | - |
-| 2 | 87.15% | 82.21% | 43.53% | 56.47% | 891,480 |
-| 3 | 87.19% | 84.00% | 49.41% | 50.59% | 1,011,900 |
-| 4 | 87.98% | 84.06% | 43.56% | 56.44% | 892,150 |
+| 0 | 99.80% | 97.91% | - | - | - |
+| 1 | 99.24% | 97.09% | - | - | - |
+| 2 | 99.22% | 97.27% | 34.83% | 65.17% | 17,833,800 |
+| 3 | 99.06% | 97.41% | 40.00% | 60.00% | 20,481,800 |
+| 4 | 99.25% | 97.24% | 25.79% | 74.21% | 13,206,980 |
 
-Reproduce the preliminary table with:
+Raw CSV: [results/mnist_release_hidden128_full_20260608.csv](results/mnist_release_hidden128_full_20260608.csv)
 
-```bash
-python examples/compare_stages.py --epochs 5 --max-train-batches 120 --max-test-batches 80 --data-dir ./data
-```
-
-For release-quality numbers, run full-stage benchmarks with a fixed environment:
+Reproduce the full-stage benchmark with:
 
 ```bash
 python examples/compare_stages.py --epochs 100 --hidden-dim 128 --max-train-batches 938 --max-test-batches 157

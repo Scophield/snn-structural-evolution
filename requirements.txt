@@ -1,5 +1,5 @@
-torch>=2.0
-torchvision>=0.15
+torch>=1.12
+torchvision>=0.13
 numpy
 tqdm
 PyYAML>=6.0
