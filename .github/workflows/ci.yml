@@ -18,5 +18,11 @@ jobs:
           python -m pip install -r requirements.txt
       - name: Run smoke tests
         run: |
-          python -m compileall snn_structural_evolution train.py core.py
+          python -m compileall snn_structural_evolution train.py core.py scripts/make_figures.py examples
           python -m unittest discover tests
+      - name: Run training dry-run
+        run: |
+          python train.py --stage 4 --epochs 1 --dry-run --data-dir ./data
+      - name: Run stage comparison smoke test
+        run: |
+          python examples/compare_stages.py --epochs 1 --max-train-batches 1 --max-test-batches 1 --data-dir ./data

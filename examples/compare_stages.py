@@ -26,6 +26,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--batch-size", type=int, default=64)
     parser.add_argument("--lr", type=float, default=0.005)
     parser.add_argument("--time-steps", type=int, default=4)
+    parser.add_argument("--hidden-dim", type=int, default=10)
     parser.add_argument("--data-dir", type=Path, default=Path("./data"))
     parser.add_argument("--device", default="auto")
     parser.add_argument("--max-train-batches", type=int, default=40)
@@ -55,7 +56,7 @@ def main() -> None:
     rows = []
     for stage in args.stages:
         seed_all(args.seed)
-        model = get_model(stage=stage, time_steps=args.time_steps).to(device)
+        model = get_model(stage=stage, hidden_dim=args.hidden_dim, time_steps=args.time_steps).to(device)
         loss_fn = torch.nn.CrossEntropyLoss().to(device)
         optimizer = torch.optim.Adam(model.parameters(), lr=args.lr)
 
