@@ -26,6 +26,8 @@ python train.py --config configs/mnist_release.yaml
 
 It is a standalone Stage 4 reference checkpoint. The Stage 0-4 comparison table in the README is produced by `examples/compare_stages.py`, while this checkpoint is produced by `train.py` with checkpointing enabled.
 
+Because the comparison table reports the final epoch from a five-stage benchmark script and this checkpoint records the best Stage 4 epoch from a standalone training run, the reported Stage 4 numbers are expected to be close but not identical.
+
 The checkpoint is saved by `train.py` as a dictionary with:
 
 - `model_state_dict`
@@ -39,7 +41,7 @@ import torch
 
 from snn_structural_evolution import get_model
 
-checkpoint = torch.load("stage4_mnist_hidden128_seed35.pt", map_location="cpu")
+checkpoint = torch.load("stage4_mnist_hidden128_seed35_v0.1.1.pt", map_location="cpu")
 model = get_model(stage=4, hidden_dim=128, time_steps=4)
 model.load_state_dict(checkpoint["model_state_dict"])
 model.eval()

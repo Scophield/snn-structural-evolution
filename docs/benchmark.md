@@ -4,7 +4,7 @@ The checked-in figures are generated from a short Stage 4 run so users can see t
 
 ## Full MNIST Benchmark
 
-This table uses 100 epochs, full MNIST train/test batches, `hidden_dim=128`, seed 35, and 4 time steps for temporal stages.
+This table uses 100 epochs, full MNIST train/test batches, `hidden_dim=128`, seed 35, batch size 64, learning rate 0.005, and 4 time steps for temporal stages.
 
 Environment used for this run:
 
@@ -29,8 +29,10 @@ Raw CSV: [results/mnist_release_hidden128_full_20260608.csv](results/mnist_relea
 Reproduce the full-stage benchmark with:
 
 ```bash
-python examples/compare_stages.py --epochs 100 --hidden-dim 128 --max-train-batches 938 --max-test-batches 157
+python examples/compare_stages.py --epochs 100 --hidden-dim 128 --batch-size 64 --lr 0.005 --seed 35 --max-train-batches 938 --max-test-batches 157 --time-steps 4 --data-dir ./data --output-csv runs/release/compare_stages_release.csv
 ```
+
+Expected result range: Stage 4 test accuracy should be around 97.0%-98.0% with these release settings. Small differences can occur across PyTorch, CUDA, and hardware versions.
 
 Use `configs/mnist_tiny.yaml` for teaching and `configs/mnist_release.yaml` as the default accuracy-oriented benchmark configuration.
 
@@ -43,5 +45,13 @@ Recommended metrics:
 | Activation sparsity | Hardware-friendly inactivity |
 | Event ops proxy | Approximate event-driven readout cost |
 | Accuracy drop | Cost of structural conversion |
+
+Metric definitions:
+
+- `spike_rate = total_spikes / possible_spikes`
+- `activation_sparsity = 1 - spike_rate`
+- `event_ops_proxy = total_spikes * num_classes`
+
+`event_ops_proxy` is a relative comparison signal for this toy readout, not a silicon energy model.
 
 Report Python, PyTorch, CUDA, GPU/CPU, random seed, epochs, batch size, learning rate, time steps, and threshold with every benchmark table.

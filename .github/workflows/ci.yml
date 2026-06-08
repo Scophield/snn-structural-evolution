@@ -8,14 +8,19 @@ jobs:
   smoke-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
+          python -m pip install -e . --no-deps
+      - name: Check CLI entrypoints
+        run: |
+          python train.py --help
+          snn-evolve-train --help
       - name: Run smoke tests
         run: |
           python -m compileall snn_structural_evolution train.py core.py scripts/make_figures.py examples

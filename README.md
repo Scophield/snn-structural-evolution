@@ -9,7 +9,14 @@
 
 A minimal PyTorch toolkit for structural evolution from ANN to event-driven SNN for hardware-aware neuromorphic computing.
 
-This repository demonstrates how conventional ANN computation can be progressively transformed into sparse, event-driven SNN behavior. The path is designed for researchers working on neuromorphic hardware, compute-in-memory accelerators, ReRAM, and analog AI systems.
+Unlike monolithic SNN demos, this repository exposes each transformation: activation binarization, temporal execution, membrane accumulation, reset behavior, spike sparsity, and event-operation cost.
+
+Run a 30-second smoke check:
+
+```bash
+python -m pip install -r requirements.txt
+python train.py --stage 4 --epochs 1 --dry-run
+```
 
 ![Structural evolution overview](docs/assets/structural_evolution.png)
 
@@ -112,15 +119,26 @@ Full Stage 0-4 benchmark with `hidden_dim=128`, 100 epochs, full MNIST train/tes
 
 Stage 4 keeps high MNIST accuracy while producing the sparsest event activity among the temporal stages.
 
+Reproducibility snapshot:
+
+| Item | Value |
+| --- | --- |
+| Exact command | `python examples/compare_stages.py --epochs 100 --hidden-dim 128 --batch-size 64 --lr 0.005 --seed 35 --max-train-batches 938 --max-test-batches 157 --time-steps 4 --data-dir ./data --output-csv runs/release/compare_stages_release.csv` |
+| Environment | Python 3.9.13, PyTorch 1.12.0, CUDA, Quadro P620 |
+| Runtime | about 1 h 41 min |
+| Expected accuracy range | Stage 4 test accuracy should be around 97.0%-98.0% with the release settings |
+| Raw results | [docs/results/mnist_release_hidden128_full_20260608.csv](docs/results/mnist_release_hidden128_full_20260608.csv) |
+| Reference checkpoint | [stage4_mnist_hidden128_seed35_v0.1.1.pt](https://github.com/Scophield/snn-structural-evolution/releases/download/v0.1.1/stage4_mnist_hidden128_seed35_v0.1.1.pt) |
+
 Regenerate the benchmark with:
 
 ```bash
-python examples/compare_stages.py --epochs 100 --hidden-dim 128 --max-train-batches 938 --max-test-batches 157 --time-steps 4
+python examples/compare_stages.py --epochs 100 --hidden-dim 128 --batch-size 64 --lr 0.005 --seed 35 --max-train-batches 938 --max-test-batches 157 --time-steps 4 --data-dir ./data --output-csv runs/release/compare_stages_release.csv
 ```
 
 Raw CSV: [docs/results/mnist_release_hidden128_full_20260608.csv](docs/results/mnist_release_hidden128_full_20260608.csv)
 
-Reference Stage 4 weights are distributed as release assets and reach 97.75% best test accuracy; see [docs/weights.md](docs/weights.md).
+Reference Stage 4 weights are distributed as release assets and reach 97.75% best test accuracy. The Stage 0-4 table above is the final-epoch comparison from `examples/compare_stages.py`; the checkpoint is the best standalone Stage 4 model from `train.py`. See [docs/weights.md](docs/weights.md).
 
 ## Why This Is Useful For Hardware Researchers
 
