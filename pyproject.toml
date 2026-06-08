@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "snn-structural-evolution"
+version = "0.1.0"
+description = "A minimal PyTorch toolkit for structural evolution from ANN to event-driven SNN."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "Scophield" }]
+dependencies = [
+    "torch>=2.0",
+    "torchvision>=0.15",
+    "numpy",
+    "tqdm",
+    "PyYAML>=6.0",
+    "matplotlib>=3.7",
+]
+
+[project.urls]
+Homepage = "https://github.com/Scophield/snn-structural-evolution"
+Repository = "https://github.com/Scophield/snn-structural-evolution"
+
+[project.scripts]
+snn-evolve-train = "snn_structural_evolution.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["snn_structural_evolution*"]

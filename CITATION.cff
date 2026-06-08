@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "SNN Structural Evolution Toolkit"
+version: 0.1.0
+date-released: 2026-06-08
+url: "https://github.com/Scophield/snn-structural-evolution"
+authors:
+  - family-names: "Gao"
+    given-names: "Shuchao"
+preferred-citation:
+  type: article
+  title: "A Four-Stage Structural Evolution Framework for Spiking Neural Networks: A Review and Perspective from Binary ANN to Event-Driven Models"
+  authors:
+    - family-names: "He"
+      given-names: "H."
+    - family-names: "Gao"
+      given-names: "S."
+  journal: "Neural Processing Letters"
+  volume: 58
+  article-number: 14
+  year: 2026
+  doi: "10.1007/s11063-025-11832-z"

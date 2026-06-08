@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+data/
+runs/
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+.DS_Store
+Thumbs.db
