@@ -11,7 +11,7 @@ A minimal PyTorch toolkit for structural evolution from ANN to event-driven SNN 
 
 Unlike monolithic SNN demos, this repository exposes each transformation: activation binarization, temporal execution, membrane accumulation, reset behavior, spike sparsity, and event-operation cost.
 
-Run a 30-second smoke check:
+Run a quick smoke check:
 
 ```bash
 python -m pip install -r requirements.txt
@@ -175,11 +175,15 @@ Stage 4 confusion matrix:
 snn-structural-evolution/
 |-- train.py
 |-- configs/
-|   `-- mnist_stage4.yaml
+|   |-- mnist_tiny.yaml
+|   |-- mnist_stage4.yaml
+|   `-- mnist_release.yaml
 |-- docs/
 |   |-- benchmark.md
 |   |-- hardware_relevance.md
-|   `-- structural_evolution.md
+|   |-- structural_evolution.md
+|   |-- weights.md
+|   `-- results/
 |-- examples/
 |   |-- compare_stages.py
 |   |-- export_spike_statistics.py
