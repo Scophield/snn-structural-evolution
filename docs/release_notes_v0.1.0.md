@@ -10,11 +10,11 @@ Initial reproducible release.
 - Config-based training
 - Metrics CSV output
 - Evidence figure generation
+- Preliminary Stage 0-4 MNIST sanity benchmark table
 - Unit tests and GitHub Actions CI
 - Legacy script preserved for reference
 
 ## Recommended Follow-Up
 
-- Run full Stage 0-4 benchmarks
-- Update README result table with final accuracy, spike rate, sparsity, and event-operation proxy
-- Create GitHub release from tag `v0.1.0` after the PR is merged
+- Run full Stage 0-4 benchmarks for release-quality claims
+- Replace the preliminary README table with full-run accuracy, spike rate, sparsity, and event-operation proxy
